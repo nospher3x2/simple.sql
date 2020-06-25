@@ -1,7 +1,7 @@
-package com.nosphery.simplesql.database.table.functions;
+package com.nosphery.simplesql.table.functions;
 
-import com.nosphery.simplesql.database.table.Table;
-import com.nosphery.simplesql.database.table.builder.QueryBuilder;
+import com.nosphery.simplesql.table.Table;
+import com.nosphery.simplesql.table.builder.QueryBuilder;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.nosphery.simplesql.database.table;
+package com.nosphery.simplesql.table;
 
 import lombok.SneakyThrows;
 import lombok.val;

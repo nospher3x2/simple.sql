@@ -1,11 +1,8 @@
 package com.nosphery.simplesql.examples.product;
 
-import com.nosphery.simplesql.database.table.enums.TableColumn;
-import com.nosphery.simplesql.examples.client.Client;
-import com.nosphery.simplesql.examples.client.ClientRepository;
+import com.nosphery.simplesql.table.enums.TableColumn;
 import com.nosphery.simplesql.repository.annotations.Column;
 import com.nosphery.simplesql.repository.annotations.Model;
-import com.nosphery.simplesql.repository.annotations.Relation;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

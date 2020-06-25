@@ -1,10 +1,10 @@
-package com.nosphery.simplesql.database.table;
+package com.nosphery.simplesql.table;
 
-import com.nosphery.simplesql.database.table.enums.TableColumn;
-import com.nosphery.simplesql.database.table.functions.TableDelete;
-import com.nosphery.simplesql.database.table.functions.TableInsert;
-import com.nosphery.simplesql.database.table.functions.TableSelect;
-import com.nosphery.simplesql.database.table.functions.TableUpdate;
+import com.nosphery.simplesql.table.enums.TableColumn;
+import com.nosphery.simplesql.table.functions.TableDelete;
+import com.nosphery.simplesql.table.functions.TableInsert;
+import com.nosphery.simplesql.table.functions.TableSelect;
+import com.nosphery.simplesql.table.functions.TableUpdate;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author oNospher

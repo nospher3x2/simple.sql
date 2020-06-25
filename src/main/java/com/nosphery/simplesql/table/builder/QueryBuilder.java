@@ -1,7 +1,7 @@
-package com.nosphery.simplesql.database.table.builder;
+package com.nosphery.simplesql.table.builder;
 
-import com.nosphery.simplesql.database.table.Table;
-import com.nosphery.simplesql.database.table.TableWhere;
+import com.nosphery.simplesql.table.Table;
+import com.nosphery.simplesql.table.TableWhere;
 import lombok.AllArgsConstructor;
 
 import java.sql.Connection;

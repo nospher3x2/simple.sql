@@ -1,4 +1,4 @@
-package com.nosphery.simplesql.database.table.enums;
+package com.nosphery.simplesql.table.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

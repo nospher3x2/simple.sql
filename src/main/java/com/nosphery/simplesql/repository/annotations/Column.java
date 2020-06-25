@@ -1,6 +1,6 @@
 package com.nosphery.simplesql.repository.annotations;
 
-import com.nosphery.simplesql.database.table.enums.TableColumn;
+import com.nosphery.simplesql.table.enums.TableColumn;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,4 +1,4 @@
-package com.nosphery.simplesql.database.table;
+package com.nosphery.simplesql.table;
 
 import java.util.Arrays;
 

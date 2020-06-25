@@ -1,6 +1,6 @@
 package com.nosphery.simplesql.repository.functions.type;
 
-import com.nosphery.simplesql.database.table.Table;
+import com.nosphery.simplesql.table.Table;
 import com.nosphery.simplesql.repository.annotations.Column;
 import com.nosphery.simplesql.repository.annotations.Model;
 import com.nosphery.simplesql.repository.functions.SimpleFunction;

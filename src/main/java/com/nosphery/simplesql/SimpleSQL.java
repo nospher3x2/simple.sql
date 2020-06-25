@@ -2,7 +2,7 @@ package com.nosphery.simplesql;
 
 import com.nosphery.simplesql.database.data.Database;
 import com.nosphery.simplesql.database.enums.DatabaseType;
-import com.nosphery.simplesql.database.table.Table;
+import com.nosphery.simplesql.table.Table;
 import lombok.Getter;
 
 import java.sql.SQLException;
