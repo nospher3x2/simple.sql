@@ -1,5 +1,6 @@
 package com.nosphery.simplesql.repository.annotations;
 
+import com.nosphery.simplesql.repository.annotations.enums.ColumnProperties;
 import com.nosphery.simplesql.table.enums.TableColumn;
 
 import java.lang.annotation.ElementType;
@@ -12,19 +13,13 @@ import java.lang.annotation.Target;
  **/
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Column {
+public @interface SimpleColumn {
 
     String name() default "";
 
-    boolean primary() default false;
-
-    boolean unique() default false;
-
-    boolean autoincrement() default false;
-
-    boolean nullable() default true;
-
     int length() default 255;
+
+    ColumnProperties[] properties();
 
     TableColumn type();
 

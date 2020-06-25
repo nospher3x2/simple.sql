@@ -1,8 +1,9 @@
 package com.nosphery.simplesql.repository.functions.type;
 
+import com.nosphery.simplesql.repository.annotations.enums.ColumnProperties;
 import com.nosphery.simplesql.table.Table;
-import com.nosphery.simplesql.repository.annotations.Column;
-import com.nosphery.simplesql.repository.annotations.Model;
+import com.nosphery.simplesql.repository.annotations.SimpleColumn;
+import com.nosphery.simplesql.repository.annotations.SimpleModel;
 import com.nosphery.simplesql.repository.functions.SimpleFunction;
 
 import java.lang.reflect.Field;
@@ -20,24 +21,21 @@ public class CreateTableFunction<T> extends SimpleFunction<T> {
     @Override
     public void execute() {
         Objects.requireNonNull(this.clazz());
-        if (!this.clazz().isAnnotationPresent(Model.class)) return;
+        if (!this.clazz().isAnnotationPresent(SimpleModel.class)) return;
 
-        Model model = this.clazz().getDeclaredAnnotation(Model.class);
-        String table_name = model.name().equals("") ? this.clazz().getName().toLowerCase() : model.name();
+        SimpleModel simpleModel = this.clazz().getDeclaredAnnotation(SimpleModel.class);
+        String table_name = simpleModel.name().equals("") ? this.clazz().getName().toLowerCase() : simpleModel.name();
         Table table = new Table(table_name);
 
         for (Field declaredField : this.clazz().getDeclaredFields()) {
             declaredField.setAccessible(true);
 
-            if (declaredField.isAnnotationPresent(Column.class)) {
-                Column column = declaredField.getDeclaredAnnotation(Column.class);
-                column.type().primaryKey(column.primary())
-                        .autoIncrement(column.autoincrement())
-                        .unique(column.unique())
-                        .nullable(column.nullable())
-                        .length(column.length());
+            if (declaredField.isAnnotationPresent(SimpleColumn.class)) {
+                SimpleColumn simpleColumn = declaredField.getDeclaredAnnotation(SimpleColumn.class);
+                simpleColumn.type().length(simpleColumn.length());
+                simpleColumn.type().injectProperties(simpleColumn.properties());
 
-                table.addColumn(column.name(), column.type());
+                table.addColumn(simpleColumn.name(), simpleColumn.type());
             }
         }
 

@@ -1,8 +1,9 @@
 package com.nosphery.simplesql.examples.product;
 
+import com.nosphery.simplesql.repository.annotations.enums.ColumnProperties;
 import com.nosphery.simplesql.table.enums.TableColumn;
-import com.nosphery.simplesql.repository.annotations.Column;
-import com.nosphery.simplesql.repository.annotations.Model;
+import com.nosphery.simplesql.repository.annotations.SimpleColumn;
+import com.nosphery.simplesql.repository.annotations.SimpleModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,16 +13,25 @@ import lombok.Setter;
  **/
 @AllArgsConstructor
 @Getter @Setter
-@Model
+@SimpleModel
 public class Product {
 
-    @Column(type = TableColumn.INTEGER, autoincrement = true)
+    @SimpleColumn(type = TableColumn.INTEGER, properties = {
+            ColumnProperties.AUTO_INCREMENT,
+            ColumnProperties.PRIMARY_KEY,
+            ColumnProperties.REQUIRED
+    })
     private final Integer id;
 
-    @Column(type = TableColumn.STRING, nullable = false, unique = true)
+    @SimpleColumn(type = TableColumn.STRING, properties = {
+            ColumnProperties.REQUIRED,
+            ColumnProperties.UNIQUE
+    })
     private String name;
 
-    @Column(type = TableColumn.INTEGER, nullable = false)
+    @SimpleColumn(type = TableColumn.INTEGER, properties = {
+            ColumnProperties.REQUIRED
+    })
     private Integer clientId;
 
 }

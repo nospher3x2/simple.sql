@@ -8,10 +8,10 @@ import java.lang.annotation.Target;
 /**
  * @author oNospher
  **/
-@Target(ElementType.TYPE)
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Model {
+public @interface SimpleRelation {
 
-    String name() default "";
+    Class<?> to();
 
 }

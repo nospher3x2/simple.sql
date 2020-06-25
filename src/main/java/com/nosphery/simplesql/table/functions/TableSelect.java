@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * @author oNospher
  **/
-public class TableSelect<S> extends QueryBuilder<S> {
+public class TableSelect extends QueryBuilder<TableSelect> {
 
     private String fields = "*";
     private Integer limit;
@@ -20,14 +20,14 @@ public class TableSelect<S> extends QueryBuilder<S> {
         super(connection, table);
     }
 
-    public S limit(int len) {
+    public TableSelect limit(int len) {
         limit = len;
-        return (S) this;
+        return this;
     }
 
-    public S columns(String... fields) {
+    public TableSelect columns(String... fields) {
         this.fields = String.join(",", Arrays.stream(fields).map(s->"`"+s+"`").toArray(String[]::new));
-        return (S) this;
+        return this;
     }
 
     @SneakyThrows

@@ -1,6 +1,7 @@
 package com.nosphery.simplesql.repository;
 
 import com.nosphery.simplesql.repository.functions.type.CreateTableFunction;
+import com.nosphery.simplesql.repository.functions.type.SearchOneFunction;
 
 /**
  * @author oNospher
@@ -15,5 +16,9 @@ public class SimpleRepository<T> {
 
     public CreateTableFunction<T> createTableFunction() {
         return new CreateTableFunction<>(clazz);
+    }
+
+    public SearchOneFunction<T> searchOneFunction() {
+        return new SearchOneFunction<>(clazz);
     }
 }

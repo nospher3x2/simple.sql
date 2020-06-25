@@ -38,10 +38,10 @@ public class Table {
         this.columns.put(name.toLowerCase(), type);
     }
 
-    public TableSelect<?> select(Connection connection) {
-        return new TableSelect<>(connection, this);
+    public TableSelect select(Connection connection) {
+        return new TableSelect(connection, this);
     }
-    public TableSelect<?> select() {
+    public TableSelect select() {
         return this.select(defaultConnection);
     }
 
