@@ -29,6 +29,6 @@ public class Client {
     private String email;
 
     @Relation(to = Product.class)
-    private List<Product> productsPurchased;
+    private List<Product> purchased;
 
 }

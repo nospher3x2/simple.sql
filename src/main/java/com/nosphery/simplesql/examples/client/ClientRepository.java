@@ -9,4 +9,6 @@ public class ClientRepository extends SimpleRepository<Client> {
     public ClientRepository(Class<Client> clazz) {
         super(clazz);
     }
+
+
 }
