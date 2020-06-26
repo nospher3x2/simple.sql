@@ -1,8 +1,8 @@
 package com.nosphery.simplesql.examples;
 
 import com.nosphery.simplesql.examples.client.Client;
-import com.nosphery.simplesql.examples.client.ClientRepository;
-import com.nosphery.simplesql.repository.annotations.enums.ColumnProperties;
+import com.nosphery.simplesql.examples.product.Product;
+import com.nosphery.simplesql.repository.SimpleRepository;
 
 /**
  * @author oNospher
@@ -10,10 +10,23 @@ import com.nosphery.simplesql.repository.annotations.enums.ColumnProperties;
 public class Examples {
 
     public static void main(String[] args) {
-        ClientRepository clientRepository = new ClientRepository(Client.class);
+        SimpleRepository<Client> clientRepository = new SimpleRepository<>();
+        clientRepository.createTable().execute();
 
-        clientRepository.createTableFunction().execute();
+        Client clientInserted = clientRepository.insert().execute(
+                new Client(
+                        0,
+                        "Ryan",
+                        "Nosphery",
+                        "nosphery@gmail.com",
+                        null
+                )
+        );
+
+        Client clientFounded = clientRepository.findOne().execute("id", clientInserted.getId());
 
 
+        System.out.println(clientInserted.getId());
+        System.out.println(clientFounded.toString());
     }
 }

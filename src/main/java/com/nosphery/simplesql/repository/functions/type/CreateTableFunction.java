@@ -1,6 +1,6 @@
 package com.nosphery.simplesql.repository.functions.type;
 
-import com.nosphery.simplesql.repository.annotations.enums.ColumnProperties;
+import com.nosphery.simplesql.repository.exceptions.SimpleModelException;
 import com.nosphery.simplesql.table.Table;
 import com.nosphery.simplesql.repository.annotations.SimpleColumn;
 import com.nosphery.simplesql.repository.annotations.SimpleModel;
@@ -21,10 +21,11 @@ public class CreateTableFunction<T> extends SimpleFunction<T> {
     @Override
     public void execute() {
         Objects.requireNonNull(this.clazz());
-        if (!this.clazz().isAnnotationPresent(SimpleModel.class)) return;
-
+        if(!this.clazz().isAnnotationPresent(SimpleModel.class)) {
+            throw new SimpleModelException("SimpleModel annotation was not found in " + this.clazz().getName() + ".class");
+        }
         SimpleModel simpleModel = this.clazz().getDeclaredAnnotation(SimpleModel.class);
-        String table_name = simpleModel.name().equals("") ? this.clazz().getName().toLowerCase() : simpleModel.name();
+        String table_name = simpleModel.name().equals("") ? this.clazz().getSimpleName().toLowerCase() : simpleModel.name();
         Table table = new Table(table_name);
 
         for (Field declaredField : this.clazz().getDeclaredFields()) {
@@ -35,7 +36,9 @@ public class CreateTableFunction<T> extends SimpleFunction<T> {
                 simpleColumn.type().length(simpleColumn.length());
                 simpleColumn.type().injectProperties(simpleColumn.properties());
 
-                table.addColumn(simpleColumn.name(), simpleColumn.type());
+                String name = simpleColumn.name().equals("") ? declaredField.getName().toLowerCase() : simpleColumn.name();
+
+                table.addColumn(name, simpleColumn.type());
             }
         }
 

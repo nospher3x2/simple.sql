@@ -11,7 +11,9 @@ public abstract class SimpleFunction<T> {
         this.clazz = clazz;
     }
 
-    public void execute() { }
+    public void execute() {
+
+    }
 
     public Class<T> clazz() {
         return clazz;

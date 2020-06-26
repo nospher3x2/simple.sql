@@ -10,5 +10,4 @@ public enum ColumnProperties {
     UNIQUE,
     REQUIRED,
 
-
 }
